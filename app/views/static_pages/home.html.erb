@@ -1,0 +1,20 @@
+<% provide(:title, "Home") %>
+
+<!-- only non logged in user can see this -->
+<% if !logged_in? %>
+<div class="jumbotron text-center col-md-6">
+	<h1>Register</h1>
+	<h2>
+		Not yet registered?
+	</h2>
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<div class="jumbotron text-center col-md-6">
+	<h1>Login</h1>
+	<h2>
+		Already registered?
+	</h2>
+	<%= link_to "Log in!", login_path, class: "btn btn-lg btn-primary" %>
+</div>
+<% end %>

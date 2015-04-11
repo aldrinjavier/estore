@@ -1,0 +1,41 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container">
+		<%= link_to "Consumer Electronics Store", root_url, id: "logo" %>
+		<nav>
+			<ul class="nav navbar-nav pull-right">
+				<!-- only non logged in user can see this -->
+				<% if !logged_in? %>
+				<li><%= link_to "Home", root_url %></li>
+				<% end %>
+
+				<!-- only customer user can see this -->
+				<% if !current_user.is_admin? %>
+				<li><%= link_to "Profile", current_user %></li>
+
+				<!-- only admin can see this -->
+				<% else %>
+				<li><%= link_to "Admin dashboard", current_user %></li>
+				<li><%= link_to "All customers", '#' %></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Hi admin, what do you want to do? <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><%= link_to "Add stock item", new_stock_item_path %></li>
+						<li class="divider"></li>
+						<li><%= link_to "Add stock item category", new_category_path %></li>
+						<li class="divider"></li>
+						<li><%= link_to "Add stock item manufacturer", new_manufacturer_path %></li>
+						
+					</ul>
+				</li>
+				<% end %>
+
+				<li><%= link_to "Catalogue", stock_items_path %></li>
+				<li><%= link_to "Log out", logout_path, method: "delete" %></li>
+				
+
+			</ul>
+		</nav>
+	</div>
+</header>

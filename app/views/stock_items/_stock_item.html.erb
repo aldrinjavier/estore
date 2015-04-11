@@ -1,0 +1,14 @@
+<% provide(:title, 'Catalogue') %>
+<%= link_to stock_item.title, stock_item %><br>
+<%= "Description: #{stock_item.description}" %><br>
+<%= "Price: €#{stock_item.price}" %><br>
+<%= "Category: #{stock_item.category.name}" %><br>
+<%= "Manufacturer: #{stock_item.manufacturer.name}" %><br>
+<%= "Quantity: x#{stock_item.current_stock_level}" %>
+<br>
+<% if current_user.is_admin? %>
+<%= link_to "Delete", stock_item, method: :delete,
+data: { confirm: "You sure?" } %>
+<%= link_to 'Edit', edit_stock_item_path(stock_item) %>
+<% end %>
+<br><br>
