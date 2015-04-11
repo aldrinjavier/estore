@@ -1,1 +1,13 @@
+<div class="row">
+	<div class="col-lg-5">
+		<%= search_form_for @search do |f| %>
+		<%= f.label :title_cont, "Search for an item" %>
+		<%= f.text_field :title_cont %>
+		<div class="row"><div class="col-lg-5">
+			<%= f.submit "Search" %>
+		</div></div>
+		<% end %>
+	</div>
+</div>
+
 <%= render @stock_items %>

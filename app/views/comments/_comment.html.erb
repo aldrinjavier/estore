@@ -1,3 +1,4 @@
-<%= comment.comment_text %><br>
-<%= comment.user.first_name%>
-assaas
+<%= "#{comment.user.first_name} says: #{comment.comment_text} " %><br>
+<%=time_ago_in_words(comment.created_at)%>
+<br>
+<br>

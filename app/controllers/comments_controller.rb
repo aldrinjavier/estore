@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
 			flash[:success] = "Your comment has been posted"
 			redirect_to @stock_item
 		else
-			render 'static_pages/home'
+			flash[:danger] = "Please enter some characters"
+			redirect_to @stock_item
 		end
 	end
 

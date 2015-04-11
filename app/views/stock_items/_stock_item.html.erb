@@ -1,14 +1,35 @@
 <% provide(:title, 'Catalogue') %>
-<%= link_to stock_item.title, stock_item %><br>
-<%= "Description: #{stock_item.description}" %><br>
-<%= "Price: €#{stock_item.price}" %><br>
-<%= "Category: #{stock_item.category.name}" %><br>
-<%= "Manufacturer: #{stock_item.manufacturer.name}" %><br>
-<%= "Quantity: x#{stock_item.current_stock_level}" %>
-<br>
-<% if current_user.is_admin? %>
-<%= link_to "Delete", stock_item, method: :delete,
-data: { confirm: "You sure?" } %>
-<%= link_to 'Edit', edit_stock_item_path(stock_item) %>
-<% end %>
+
+<table class= "table table-bordered">
+	<tr>
+
+		<th><%= sort_link @search, :title, "Item name" %></th>
+		<th><%= sort_link @search, :price, "Price" %></th>
+		<th>Description</th>
+		<th><%= sort_link @search, :category, "Category" %></th>
+		<th><%= sort_link @search, :manufacturer, "Manufacturer" %></th>
+		<th>Stock level</th>
+
+	</tr>
+
+	<tr>
+		<td><%= link_to stock_item.title, stock_item %></td>
+		<td>€<%= stock_item.price%></td>
+		<td><%= stock_item.description %></td>
+		<td><%= stock_item.category.name%></td>
+		<td><%= stock_item.manufacturer.name%></td>
+		<td><%= stock_item.current_stock_level%></td>
+
+		<% if current_user.is_admin? %>
+		<td>
+			<%= link_to "Delete", stock_item, method: :delete,
+			data: { confirm: "You sure?" } %>
+		</td>
+		<td>
+			<%= link_to 'Edit', edit_stock_item_path(stock_item) %>
+			<% end %>
+		</td>
+	</tr>
+
+</table>
 <br><br>

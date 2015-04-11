@@ -15,7 +15,9 @@ class StockItemsController < ApplicationController
 	end
 
 	def index
-		@stock_items = StockItem.all
+		@search = StockItem.search(params[:q])
+		# @search.result
+		@stock_items = @search.result
 	end
 
 	def destroy
@@ -40,7 +42,7 @@ class StockItemsController < ApplicationController
 
 	def show 
 		@stock_item = StockItem.find(params[:id])
-		@comments = @stock_item.comments
+		@comments = @stock_item.comments.paginate(page: params[:page], per_page: 5)
 	end
 
 	private

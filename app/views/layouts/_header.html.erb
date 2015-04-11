@@ -9,7 +9,7 @@
 				<% end %>
 
 				<!-- only customer user can see this -->
-				<% if !current_user.is_admin? %>
+				<% if logged_in? && !current_user.is_admin? %>
 				<li><%= link_to "Profile", current_user %></li>
 
 				<!-- only admin can see this -->
