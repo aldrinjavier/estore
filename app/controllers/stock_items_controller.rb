@@ -40,6 +40,7 @@ class StockItemsController < ApplicationController
 
 	def show 
 		@stock_item = StockItem.find(params[:id])
+		@comments = @stock_item.comments
 	end
 
 	private

@@ -3,3 +3,17 @@
 <%="Price: €#{@stock_item.price}" %><br>
 <%="Category: #{@stock_item.category.name}"  %><br>
 <%="Manufacturer: #{@stock_item.manufacturer.name}" %><br>
+
+<div class="row">
+	<div class="col-md-6">
+		<%= form_for([@stock_item, Comment.new]) do |f| %>
+		<%= f.label :comment_text, "Leave comment" %>
+		<%= f.text_area :comment_text, class: 'form-control' %>
+		<%= f.submit "Post comment", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+
+<%= render @comments %>
+

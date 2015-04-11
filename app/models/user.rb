@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :comments
 	has_secure_password
 	before_save { self.email = email.downcase }
 	validates :first_name, presence: true, length: { maximum: 50 }
